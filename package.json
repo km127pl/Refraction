@@ -16,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/KM127PL/Refraction/issues"
   },
-  "homepage": "https://refraction.us.to"
+  "homepage": "https://refraction.us.to",
+  "dependencies": {
+    "@discordjs/rest": "^1.5.0",
+    "@types/node": "^18.11.17",
+    "discord.js": "^14.7.1",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
 }

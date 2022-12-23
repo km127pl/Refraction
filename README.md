@@ -14,7 +14,7 @@ Getting Started
 
 To add Refraction to your Discord server, simply follow these steps:
 
-- Invite the bot to your server using this link: [INSERT INVITE LINK HERE]
+- Invite the bot to your server using [this link](https://refraction.us.to/add?src=readme)
 - Use the `/settings` slash command to configure the bot's settings for your server.
 - Enjoy all the great features that Refraction has to offer!
 
@@ -30,10 +30,11 @@ We are always happy to help and will do our best to resolve any issues you may h
 ## License
 
 Refraction is licensed under the GNU AGPL license. For more information, see the [LICENSE](LICENSE) file.
+
 ## Credits
 
 Refraction was developed by km127pl with the help of the following open source projects:
 
-[INSERT OPEN SOURCE PROJECT NAME HERE](https://example.com)
+[Discord.js v14 Template]( https://github.com/MericcaN41/discordjs-v14-template-ts/blob/main/src/types.d.ts)
 
 We are grateful to the developers of these projects for their contributions and support.
