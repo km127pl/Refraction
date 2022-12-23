@@ -17,7 +17,7 @@
 - [x] Clear (purge messages)
 - [ ] Lockdown (lock a channel)
 - [ ] Unlock (unlock a channel)
-- [ ] Slowmode (set slowmode for a channel)
+- [x] Slowmode (set slowmode for a channel)
 
 ### Utility
 - [x] Avatar (get a user's avatar)
@@ -36,3 +36,7 @@
 - [x] Coinflip (flip a coin)
 - [x] Dice (roll a dice)
 - [x] RPS (play rock paper scissors)
+
+# General
+- [ ] Send a help message upon @mentioning the bot
+- [ ] Split slash commands into multiple folders (moderation, utility, fun, etc.)

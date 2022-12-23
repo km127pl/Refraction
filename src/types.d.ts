@@ -3,6 +3,7 @@
  * credits to MericcaN41 & davidotno, https://github.com/MericcaN41/discordjs-v14-template-ts/blob/main/src/types.d.ts
  */
 import { SlashCommandBuilder, CommandInteraction, Collection, PermissionResolvable, Message, AutocompleteInteraction } from "discord.js"
+import Keyv from "keyv"
 
 export interface SlashCommand {
 	command: SlashCommandBuilder | any,
@@ -45,6 +46,7 @@ declare module "discord.js" {
 	export interface Client {
 		slashCommands: Collection<string, SlashCommand>
 		commands: Collection<string, Command>,
-		cooldowns: Collection<string, number>
+		cooldowns: Collection<string, number>,
+		db: Keyv
 	}
 }
