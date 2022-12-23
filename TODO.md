@@ -30,3 +30,9 @@
 - [x] Userinfo (get a user's info)
 - [x] Serverinfo (get the server's info)
 - [ ] Roleinfo (get a role's info)
+
+### Fun
+- [x] 8ball (ask the magic 8ball a question)
+- [x] Coinflip (flip a coin)
+- [x] Dice (roll a dice)
+- [ ] RPS (play rock paper scissors)
