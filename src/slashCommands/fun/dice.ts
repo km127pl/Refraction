@@ -1,17 +1,19 @@
 import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
-import { SlashCommand } from "../types";
+import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
 	command: new SlashCommandBuilder()
-		.setName("uptime")
-		.setDescription("Shows the bot's uptime"),
+		.setName("dice")
+		.setDescription("Rolls a dice"),
 	execute: interaction => {
 		interaction.reply({
 			embeds: [
 				new EmbedBuilder()
 					.setAuthor({ name: "Refraction" })
-					.setDescription(`🕒 **Uptime:**\n ${process.uptime()}`)
+					.setDescription(`🎲 **Dice**\n ${Math.floor(Math.random() * 6) + 1}`)
 					.setColor("#D14D3B")
+					.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
+					.setTimestamp()
 			]
 		})
 	},

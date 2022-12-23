@@ -20,6 +20,12 @@ export interface Command {
 	cooldown?: number,
 }
 
+export interface Warn {
+	id: string,
+	reason: string,
+	points: number
+}
+
 interface GuildOptions {
 	prefix: string,
 }

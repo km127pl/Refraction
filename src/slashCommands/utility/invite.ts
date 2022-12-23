@@ -1,17 +1,17 @@
 import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
-import { SlashCommand } from "../types";
+import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
 	command: new SlashCommandBuilder()
-		.setName("support")
-		.setDescription("Sends an invite to the support server to the user"),
+		.setName("invite")
+		.setDescription("Sends an invite of the bot to the user"),
 	execute: interaction => {
 		// send to DMs
 		interaction.user.send({
 			embeds: [
 				new EmbedBuilder()
 					.setAuthor({ name: "Refraction" })
-					.setDescription(`🔗 **Support Server:**\n https://refraction.us.to/support`)
+					.setDescription(`🔗 **Invite:**\n https://refraction.us.to/add`)
 					.setColor("#D14D3B")
 			]
 		}).catch(() => { // if the user has DMs disabled
@@ -19,7 +19,7 @@ const command: SlashCommand = {
 				embeds: [
 					new EmbedBuilder()
 						.setAuthor({ name: "Refraction" })
-						.setDescription(`🔗 **Support Server:**\n https://refraction.us.to/support`)
+						.setDescription(`🔗 **Invite:**\n https://refraction.us.to/add`)
 						.setColor("#D14D3B")
 				], ephemeral: true
 			});

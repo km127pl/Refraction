@@ -1,16 +1,16 @@
 import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
-import { SlashCommand } from "../types";
+import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
 	command: new SlashCommandBuilder()
-		.setName("dice")
-		.setDescription("Rolls a dice"),
+		.setName("coinflip")
+		.setDescription("Flips a coin"),
 	execute: interaction => {
 		interaction.reply({
 			embeds: [
 				new EmbedBuilder()
 					.setAuthor({ name: "Refraction" })
-					.setDescription(`🎲 **Dice**\n ${Math.floor(Math.random() * 6) + 1}`)
+					.setDescription(`🪙 **Coinflip**\n ${Math.random() > 0.5 ? "Heads" : "Tails"}`)
 					.setColor("#D14D3B")
 					.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
 					.setTimestamp()
