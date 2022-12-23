@@ -20,7 +20,7 @@
 - [ ] Slowmode (set slowmode for a channel)
 
 ### Utility
-- [ ] Avatar (get a user's avatar)
+- [x] Avatar (get a user's avatar)
 - [x] Ping (get the bot's ping)
 - [ ] Help (get help for a command)
 - [x] Invite (get the bot's invite link)
