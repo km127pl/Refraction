@@ -15,7 +15,7 @@ Getting Started
 To add Refraction to your Discord server, simply follow these steps:
 
 - Invite the bot to your server using this link: [INSERT INVITE LINK HERE]
-- Use the `/set` slash command to configure the bot's settings for your server.
+- Use the `/settings` slash command to configure the bot's settings for your server.
 - Enjoy all the great features that Refraction has to offer!
 
 ## Support
