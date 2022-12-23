@@ -35,4 +35,4 @@
 - [x] 8ball (ask the magic 8ball a question)
 - [x] Coinflip (flip a coin)
 - [x] Dice (roll a dice)
-- [ ] RPS (play rock paper scissors)
+- [x] RPS (play rock paper scissors)
