@@ -10,13 +10,22 @@ Refraction is a powerful Discord bot with a range of moderation and utility feat
 - Role management and assignment
 - Server backups and server stats
 
-Getting Started
+## Getting Started
 
 To add Refraction to your Discord server, simply follow these steps:
 
 - Invite the bot to your server using [this link](https://refraction.us.to/add?src=readme)
 - Use the `/settings` slash command to configure the bot's settings for your server.
 - Enjoy all the great features that Refraction has to offer!
+
+## Building
+
+Refraction is built using [TypeScript](https://www.typescriptlang.org/) and [Discord.js](https://discord.js.org/). To build Refraction, you will need to have [Node.js](https://nodejs.org/en/) installed on your machine. Once you have Node.js installed, you can build Refraction by following these steps:
+- Clone the repository using `git clone https://github.com/km127pl/refraction`
+- Install the dependencies using `npm install`
+- Build the project using `tsc`
+- Copy the `.env.example` file to `.env` and fill in the required values
+- Run the project using `node dist/index.js`
 
 ## Support
 
