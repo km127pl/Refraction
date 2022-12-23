@@ -1,0 +1,20 @@
+{
+  "name": "refraction",
+  "version": "1.0.0",
+  "description": "Powerful Discord bot with a range of moderation and utility features.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KM127PL/Refraction.git"
+  },
+  "keywords": [],
+  "author": "KM127PL",
+  "license": "GNU AGPL",
+  "bugs": {
+    "url": "https://github.com/KM127PL/Refraction/issues"
+  },
+  "homepage": "https://refraction.us.to"
+}
