@@ -12,8 +12,8 @@
 - [ ] Kick
 - [ ] Mute
 - [ ] Unmute
-- [ ] Warn
-- [ ] Unwarn
+- [x] Warn
+- [x] Unwarn
 - [x] Clear (purge messages)
 - [ ] Lockdown (lock a channel)
 - [ ] Unlock (unlock a channel)
@@ -39,4 +39,4 @@
 
 # General
 - [ ] Send a help message upon @mentioning the bot
-- [ ] Split slash commands into multiple folders (moderation, utility, fun, etc.)
+- [x] Split slash commands into multiple folders (moderation, utility, fun, etc.)
