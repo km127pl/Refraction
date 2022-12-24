@@ -4,7 +4,14 @@
   "description": "Powerful Discord bot with a range of moderation and utility features.",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+	"start:docker": "docker run --env-file .env -d --name refraction -p 3001:3001 refraction",
+	"build": "npx tsc",
+	"build:docker": "docker build -t refraction .",
+	"test": "npm run build && npm run start",
+	"test:docker": "npm run build:docker && npm run start:docker",
+	"scan:docker": "docker scan refraction",
+	"dev": "npx tsc -w"
   },
   "repository": {
     "type": "git",

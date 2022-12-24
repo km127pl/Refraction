@@ -8,8 +8,9 @@ RUN npm install
 
 COPY . .
 
-RUN tsc
+RUN npm run build
 
+# you can remove this if you are not going to use the statistic server
 EXPOSE 3001
 
 CMD ["npm", "start"]
