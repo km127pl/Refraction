@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
-	"start:docker": "docker run --env-file .env -d --name refraction -p 3001:3001 refraction",
+	"start:docker": "docker run --env-file .env -d --name refraction -p 3001:3001 km127pl/refraction:latest",
 	"build": "npx tsc",
 	"build:docker": "docker build -t km127pl/refraction:latest .",
 	"test": "npm run build && npm run start",
