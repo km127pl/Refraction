@@ -11,6 +11,6 @@ COPY . .
 RUN npm run build
 
 # you can remove this if you are not going to use the statistic server
-EXPOSE 3001
+EXPOSE 3001/tcp
 
 CMD ["npm", "start"]
