@@ -8,6 +8,7 @@
 	"start:docker": "docker run --env-file .env -d --name refraction -p 3001:3001 km127pl/refraction:latest",
 	"build": "npx tsc",
 	"build:docker": "docker build -t km127pl/refraction:latest .",
+	"push:docker": "docker push km127pl/refraction:latest",
 	"test": "npm run build && npm run start",
 	"test:docker": "npm run build:docker && npm run start:docker",
 	"scan:docker": "docker scan refraction",
