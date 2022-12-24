@@ -43,7 +43,9 @@ declare global {
 		interface ProcessEnv {
 			DISCORD_TOKEN: string,
 			CLIENT_ID: string,
-			PUBLIC_KEY: string
+			PUBLIC_KEY: string,
+			ENABLE_STATISTICS: boolean,
+			STATISTICS_AUTH_TOKEN: string,
 		}
 	}
 }
