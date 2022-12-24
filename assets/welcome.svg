@@ -1,0 +1,27 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="welcome banner">
+<rect width="1280" height="640" fill="#070707"/>
+<rect id="Rectangle 15" y="624" width="1280" height="16" fill="url(#paint0_linear_35_48)"/>
+<text id="Welcome {USER:NAME}" fill="white" xml:space="preserve" style="white-space: pre" font-family="Poppins" font-size="72" font-weight="600" letter-spacing="0em"><tspan x="68" y="230.2">Welcome {USER:NAME}</tspan></text>
+<text id="We hope you have a good stay!" fill="#D9D9D9" xml:space="preserve" style="white-space: pre" font-family="Poppins" font-size="48" letter-spacing="0em"><tspan x="68" y="301.8">We hope you have a good </tspan><tspan x="68" y="353.8">stay!</tspan></text>
+<g id="Group 6">
+<path id="Vector 4" d="M1185.83 591.995L1191.4 582.241C1194.42 576.937 1202.04 576.844 1205.19 582.072L1206.17 583.683C1207.68 586.194 1207.7 589.332 1206.22 591.862L1201.45 600.004C1200.01 602.454 1197.39 603.96 1194.55 603.96H1192.78C1186.64 603.96 1182.79 597.328 1185.83 591.995Z" fill="white" stroke="white"/>
+<g id="Vector 5">
+<path d="M1236.01 603.96H1237.73C1243.87 603.96 1247.72 597.328 1244.68 591.995L1216.21 542.11C1214.76 539.575 1212.05 538.029 1209.13 538.077L1207.28 538.107C1201.19 538.206 1197.44 544.803 1200.47 550.086L1229.07 599.94C1230.5 602.427 1233.14 603.96 1236.01 603.96Z" fill="white"/>
+<path d="M1258.68 559.676L1257.66 561.419C1254.64 566.621 1247.17 566.751 1243.97 561.658L1241.31 557.416C1240.63 556.334 1239.44 555.677 1238.16 555.677C1236.89 555.677 1235.71 555.029 1235.02 553.96L1232.81 550.492C1229.38 545.129 1233.29 538.106 1239.65 538.185L1246.46 538.27C1249.28 538.306 1251.88 539.83 1253.29 542.28L1258.69 551.667C1260.12 554.148 1260.11 557.202 1258.68 559.676Z" fill="white"/>
+<path d="M1236.01 603.96H1237.73C1243.87 603.96 1247.72 597.328 1244.68 591.995L1216.21 542.11C1214.76 539.575 1212.05 538.029 1209.13 538.077L1207.28 538.107C1201.19 538.206 1197.44 544.803 1200.47 550.086L1229.07 599.94C1230.5 602.427 1233.14 603.96 1236.01 603.96Z" stroke="white"/>
+<path d="M1258.68 559.676L1257.66 561.419C1254.64 566.621 1247.17 566.751 1243.97 561.658L1241.31 557.416C1240.63 556.334 1239.44 555.677 1238.16 555.677C1236.89 555.677 1235.71 555.029 1235.02 553.96L1232.81 550.492C1229.38 545.129 1233.29 538.106 1239.65 538.185L1246.46 538.27C1249.28 538.306 1251.88 539.83 1253.29 542.28L1258.69 551.667C1260.12 554.148 1260.11 557.202 1258.68 559.676Z" stroke="white"/>
+</g>
+</g>
+<circle id="Ellipse 1" cx="1061.5" cy="312.5" r="147.5" fill="#D9D9D9"/>
+</g>
+<defs>
+<style type="text/css">
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap');
+</style>
+<linearGradient id="paint0_linear_35_48" x1="0" y1="624" x2="1280" y2="624" gradientUnits="userSpaceOnUse">
+<stop stop-color="#D14D3B"/>
+<stop offset="1" stop-color="#5856D6"/>
+</linearGradient>
+</defs>
+</svg>

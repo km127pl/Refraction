@@ -4,6 +4,7 @@ import registerCommands from "./commands";
 import registerEvents from "./events";
 import { config } from "dotenv";
 import Keyv from "keyv";
+import { readFileSync } from "fs";
 config();
 
 const { Guilds, MessageContent, GuildMessages, GuildMembers } = GatewayIntentBits;
@@ -13,9 +14,18 @@ const client = new Client({
 
 client.slashCommands = new Collection<string, SlashCommand>();
 client.cooldowns = new Collection<string, number>();
+// yes, i know this is bad practice, but i'm too lazy to set up a database server
+// leave me alone
 client.db = new Keyv('sqlite://./resources/database.sqlite');
 
 registerCommands(client);
 registerEvents(client);
 
 client.login(process.env.DISCORD_TOKEN);
+
+const welcomeBanner = readFileSync("./assets/welcome.svg", "utf-8");
+
+// export static client
+export default client;
+
+export { welcomeBanner };

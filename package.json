@@ -23,9 +23,11 @@
     "@types/node": "^18.11.17",
     "discord.js": "^14.7.1",
     "dotenv": "^16.0.3",
-    "keyv": "^4.5.2"
+    "keyv": "^4.5.2",
+    "svg2png": "^4.1.1"
   },
   "devDependencies": {
+    "@types/svg2png": "^4.1.1",
     "typescript": "^4.9.4"
   }
 }

@@ -1,9 +1,9 @@
 # ToDo
 
 ## Features (events)
-- On join/leave image (svg) sent to a channel
-- On join/leave message sent to a channel
-- On join message sent to a user dm
+- [ ] On join/leave image (svg) sent to a channel
+- [ ] On join/leave message sent to a channel
+- [ ] On join message sent to a user dm
 
 ## Features (commands)
 
@@ -18,6 +18,7 @@
 - [ ] Lockdown (lock a channel)
 - [ ] Unlock (unlock a channel)
 - [x] Slowmode (set slowmode for a channel)
+- [x] Settings (get/set the server's settings)
 
 ### Utility
 - [x] Avatar (get a user's avatar)
