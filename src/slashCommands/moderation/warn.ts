@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } from "discord.js"
+import { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits, User } from "discord.js"
 import { SlashCommand, Warn } from "../../types";
 
 const command: SlashCommand = {
@@ -10,12 +10,12 @@ const command: SlashCommand = {
 		.addIntegerOption(option => option.setName("points").setDescription("The amount of points to warn the user with").setRequired(true))
 		.setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 	execute: async interaction => {
-		const user = interaction.options.getUser("user", true)
-		const reason = interaction.options.data[1].value as string
-		const points = interaction.options.data[2].value as number
-		const warnId = `warns_${interaction.guildId}_${user.id}_${Date.now()}`
+		const user : User = interaction.options.getUser("user", true);
+		const reason : string = interaction.options.get("reason")?.value as string;
+		const points : number = interaction.options.get("points")?.value as number;
+		const warnId : string = `warns_${interaction.guildId}_${user.id}_${Date.now()}`
 
-		var warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || []
+		let warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || []
 		const warn = {
 			id: warnId,
 			reason: reason,
@@ -45,7 +45,7 @@ const command: SlashCommand = {
 						.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
 						.setTimestamp()
 				]
-			}).catch(err => { // edit the embed to say additonally that the user could not be dm'd
+			}).catch(_ => { // edit the embed to say additonally that the user could not be dm'd
 				interaction.editReply({
 					embeds: [
 						new EmbedBuilder()

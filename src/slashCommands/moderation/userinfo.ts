@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
+import { SlashCommandBuilder, EmbedBuilder, User } from "discord.js"
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -7,8 +7,9 @@ const command: SlashCommand = {
 		.setDescription("Shows information about a user")
 		.addUserOption(option => option.setName("user").setDescription("The user to get information about")),
 	execute: interaction => {
-		const user = interaction.options.getUser("user") || interaction.user;
-		const userCreated = interaction?.guild?.members?.cache?.get(user.id)?.joinedTimestamp || user.createdTimestamp;
+		const user : User = interaction.options.getUser("user") || interaction.user;
+		const userCreated : number = interaction?.guild?.members?.cache?.get(user.id)?.joinedTimestamp || user.createdTimestamp;
+
 		interaction.reply({
 			embeds: [
 				new EmbedBuilder()

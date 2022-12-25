@@ -9,9 +9,9 @@ const command: SlashCommand = {
 		.addSubcommand(subcommand => subcommand.setName("leave").setDescription("Change the leave message").addStringOption(option => option.setName("message").setDescription("The message to send when a user leaves").setRequired(true)).addChannelOption(option => option.setName("channel").setDescription("The channel to send the leave message in").setRequired(true)))
 		.setDefaultMemberPermissions(PermissionFlagsBits.ManageGuild),
 		execute: interaction => {
-		const subcommand = interaction.options.data[0].name;
-		const message = interaction.options.get("message")?.value as string;
-		const channel = interaction.options.get("channel")?.channel as TextChannel;
+		const subcommand : string = interaction.options.data[0].name; // there is no better way of getting the subcommand name
+		const message : string = interaction.options.get("message")?.value as string;
+		const channel : TextChannel = interaction.options.get("channel")?.channel as TextChannel;
 
 		if (subcommand === "join") {
 			// change join message
