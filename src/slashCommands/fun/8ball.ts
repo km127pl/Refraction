@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
+import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -29,7 +29,7 @@ const command: SlashCommand = {
 			"My sources say no.",
 			"Outlook not so good.",
 			"Very doubtful."
-		]
+		];
 
 		// send a "thinking" message
 		interaction.reply({
@@ -40,10 +40,10 @@ const command: SlashCommand = {
 					.setColor("#D14D3B")
 					.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
 			]
-		})
+		});
 
 		// get a random response
-		const response = responses[Math.floor(Math.random() * responses.length)]
+		const response = responses[Math.floor(Math.random() * responses.length)];
 
 		// edit the "thinking" message to the response after 2 seconds
 		setTimeout(() => {
@@ -56,10 +56,10 @@ const command: SlashCommand = {
 						.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
 						.setTimestamp()
 				]
-			})
-		}, 2000)
+			});
+		}, 2000);
 	},
 	cooldown: 10
-}
+};
 
-export default command
+export default command;

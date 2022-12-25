@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
+import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -28,9 +28,9 @@ const command: SlashCommand = {
 					.setFooter({ text: `Requested by ${interaction.user.username}` })
 					.setTimestamp()
 			]
-		})
+		});
 	},
 	cooldown: 10
-}
+};
 
-export default command
+export default command;

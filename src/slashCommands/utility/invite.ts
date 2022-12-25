@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
+import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -11,7 +11,7 @@ const command: SlashCommand = {
 			embeds: [
 				new EmbedBuilder()
 					.setAuthor({ name: "Refraction" })
-					.setDescription(`🔗 **Invite:**\n https://refraction.us.to/add`)
+					.setDescription("🔗 **Invite:**\n https://refraction.us.to/add")
 					.setColor("#D14D3B")
 			]
 		}).catch(() => { // if the user has DMs disabled
@@ -19,13 +19,13 @@ const command: SlashCommand = {
 				embeds: [
 					new EmbedBuilder()
 						.setAuthor({ name: "Refraction" })
-						.setDescription(`🔗 **Invite:**\n https://refraction.us.to/add`)
+						.setDescription("🔗 **Invite:**\n https://refraction.us.to/add")
 						.setColor("#D14D3B")
 				], ephemeral: true
 			});
-		})
+		});
 	},
 	cooldown: 10
-}
+};
 
-export default command
+export default command;

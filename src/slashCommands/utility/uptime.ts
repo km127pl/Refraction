@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
+import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -19,9 +19,9 @@ const command: SlashCommand = {
 					.setDescription(`🕒 **Uptime:**\n ${days}d:${hours}h:${minutes}m:${seconds}s\n Since ${new Date(interaction.client.readyTimestamp).toLocaleString()}`)
 					.setColor("#D14D3B")
 			]
-		})
+		});
 	},
 	cooldown: 10
-}
+};
 
-export default command
+export default command;

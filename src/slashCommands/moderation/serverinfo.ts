@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
+import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -16,8 +16,8 @@ const command: SlashCommand = {
 			]
 		});
 
-		var guildOwner = await guild.members.fetch(guild.ownerId);
-		var guildCreateStamp = Math.floor(guild.createdAt.getTime() / 1000);
+		const guildOwner = await guild.members.fetch(guild.ownerId);
+		const guildCreateStamp = Math.floor(guild.createdAt.getTime() / 1000);
 
 		interaction.reply({
 			embeds: [
@@ -38,9 +38,9 @@ const command: SlashCommand = {
 					.setFooter({ text: `Requested by ${interaction.user.username}` })
 					.setTimestamp()
 			]
-		})
+		});
 	},
 	cooldown: 10
-}
+};
 
-export default command
+export default command;

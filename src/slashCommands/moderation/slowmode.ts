@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder, TextChannel, PermissionFlagsBits } from "discord.js"
+import { SlashCommandBuilder, EmbedBuilder, TextChannel, PermissionFlagsBits } from "discord.js";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -18,7 +18,7 @@ const command: SlashCommand = {
 						.setDescription("You can only set the slowmode to up to 21600 seconds (6 hours)")
 						.setColor("#D14D3B")
 				]
-			})
+			});
 		} else if (amount < 0) {
 			interaction.reply({
 				embeds: [
@@ -27,9 +27,9 @@ const command: SlashCommand = {
 						.setDescription("You can't set the slowmode to a negative number")
 						.setColor("#D14D3B")
 				]
-			})
+			});
 		} else {
-			var textChannel = interaction.channel as TextChannel;
+			const textChannel = interaction.channel as TextChannel;
 			textChannel.setRateLimitPerUser(amount);
 			interaction.reply({
 				embeds: [
@@ -40,10 +40,10 @@ const command: SlashCommand = {
 						.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
 						.setTimestamp()
 				]
-			})
+			});
 		}
 	},
 	cooldown: 10
-}
+};
 
-export default command
+export default command;

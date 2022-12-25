@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } from "discord.js"
+import { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } from "discord.js";
 import { SlashCommand, Warn } from "../../types";
 
 const command: SlashCommand = {
@@ -10,19 +10,19 @@ const command: SlashCommand = {
 		.addIntegerOption(option => option.setName("points").setDescription("The amount of points to warn the user with").setRequired(true))
 		.setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 	execute: async interaction => {
-		const user = interaction.options.getUser("user", true)
-		const reason = interaction.options.data[1].value as string
-		const points = interaction.options.data[2].value as number
-		const warnId = `warns_${interaction.guildId}_${user.id}_${Date.now()}`
+		const user = interaction.options.getUser("user", true);
+		const reason = interaction.options.data[1].value as string;
+		const points = interaction.options.data[2].value as number;
+		const warnId = `warns_${interaction.guildId}_${user.id}_${Date.now()}`;
 
-		var warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || []
+		const warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || [];
 		const warn = {
 			id: warnId,
 			reason: reason,
 			points: points
-		} as Warn
+		} as Warn;
 		warns.push(warn);
-		await interaction.client.db.set(`warns_${interaction.guildId}_${user.id}`, warns)
+		await interaction.client.db.set(`warns_${interaction.guildId}_${user.id}`, warns);
 
 		interaction.reply({
 			embeds: [
@@ -33,7 +33,7 @@ const command: SlashCommand = {
 					.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
 					.setTimestamp()
 			]
-		})
+		});
 		// dm the user
 		user.createDM().then(dm => {
 			dm.send({
@@ -61,4 +61,4 @@ const command: SlashCommand = {
 	}
 };
 
-export default command
+export default command;

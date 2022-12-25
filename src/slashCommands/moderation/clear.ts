@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder, TextChannel, PermissionFlagsBits } from "discord.js"
+import { SlashCommandBuilder, EmbedBuilder, TextChannel, PermissionFlagsBits } from "discord.js";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -18,7 +18,7 @@ const command: SlashCommand = {
 						.setDescription("You can only clear up to 100 messages at a time")
 						.setColor("#D14D3B")
 				]
-			})
+			});
 		} else if (amount < 1) {
 			interaction.reply({
 				embeds: [
@@ -27,9 +27,9 @@ const command: SlashCommand = {
 						.setDescription("You must clear at least 1 message")
 						.setColor("#D14D3B")
 				]
-			})
+			});
 		} else {
-			var textChannel = interaction.channel as TextChannel;
+			const textChannel = interaction.channel as TextChannel;
 			textChannel.bulkDelete(amount + 1);
 			interaction.reply({
 				embeds: [
@@ -38,10 +38,10 @@ const command: SlashCommand = {
 						.setDescription(`Cleared ${amount} messages`)
 						.setColor("#D14D3B")
 				]
-			})
+			});
 		}
 	},
 	cooldown: 10
-}
+};
 
-export default command
+export default command;
