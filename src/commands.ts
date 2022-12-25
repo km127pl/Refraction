@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { Client, Routes, SlashCommandBuilder } from "discord.js";
 import { REST } from "@discordjs/rest";
 import { readdirSync, statSync } from "fs";
@@ -8,7 +9,7 @@ export default function registerCommands(client : Client) {
 	const register = async (file : string) => {
 		if (!file.endsWith(".js")) return;
 		console.log(`[!] Loading ${file}...`);
-		const command: SlashCommand = (await import(`./${file}`)).default;
+		const command: SlashCommand = require(file).default;
 		slashCommands.push(command.command);
 		client.slashCommands.set(command.command.name, command);
 	};

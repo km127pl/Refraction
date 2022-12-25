@@ -1,17 +1,6 @@
 import { randomUUID } from "crypto";
 import { CategoryChannel, Client, GuildBasedChannel, Snowflake, TextChannel, VoiceChannel } from "discord.js";
-import { Backup, BackupCategoryChannel, BackupInfo, BackupTextChannel, BackupVoiceChannel } from "../types";
-
-/**
- * Load a backup for a server
- * @param backupId the id of the backup
- * @param serverId the id of the server
- * @returns if the rollback was successful
- */
-const loadBackup = async (backupId : string, serverId: Snowflake, client : Client) : Promise<boolean> => {
-	console.log("Loading backup");
-	return false;
-};
+import { Backup, BackupCategoryChannel, BackupTextChannel, BackupVoiceChannel } from "../types";
 
 /**
  * Save a backup for a server
@@ -54,9 +43,58 @@ const saveBackup = async (serverId: Snowflake, client : Client) : Promise<Backup
  * @param serverId the id of the server
  * @returns if the rollback was successful
  */
-const getBackup = async (backupId : string, serverId: Snowflake, client : Client) : Promise<BackupInfo> => {
+const getBackup = async (backupId : string, serverId: Snowflake, client : Client) : Promise<Backup> => {
 	return (await client.db.get(`backup_${serverId}_${backupId}`));
 };
 
+/**
+ * Load a backup for a server
+ * @param backupId the id of the backup
+ * @param serverId the id of the server
+ * @returns if the rollback was successful
+ */
+const loadBackup = async (backupId : string, serverId: Snowflake, client : Client) : Promise<boolean> => {
+	const backup : Backup = await getBackup(backupId, serverId, client);
+	if (backup) {
+		const guild = await client.guilds.fetch(serverId);
+		const channels = guild.channels.cache;
+		const backupChannels = backup.channels;
+
+		// Delete all channels
+		for (const channel of channels.values()) {
+			await channel.delete(); // This will take a while
+		}
+
+		// Create all channels
+		for (const channel of backupChannels.category) {
+			await guild.channels.create({
+				name: channel.name,
+				type: channel.type,
+				permissionOverwrites: channel.permissionOverwrites,
+				nsfw: channel.nsfw,
+			});
+		}
+
+		for (const channel of backupChannels.text) {
+			await guild.channels.create({
+				name: channel.name,
+				type: channel.type,
+				rateLimitPerUser: channel.rateLimitPerUser,
+				parent: channel.parent,
+			});
+		}
+
+		for (const channel of backupChannels.voice) {
+			await guild.channels.create({
+				name: channel.name,
+				type: channel.type,
+			});
+		}
+
+		return true;
+	}
+
+	return false;
+};
 
 export { saveBackup, loadBackup, getBackup };

@@ -6,6 +6,7 @@ import { SlashCommandBuilder, CommandInteraction, Collection, PermissionResolvab
 import Keyv from "keyv";
 
 export interface SlashCommand {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	command: SlashCommandBuilder | any,
 	execute: (interaction: CommandInteraction) => void,
 	autocomplete?: (interaction: AutocompleteInteraction) => void,
@@ -32,7 +33,8 @@ export interface BackupTextChannel {
 	topic: string,
 	rateLimitPerUser: number,
 	type: number,
-	permissionOverwrites: PermissionOverwriteManager
+	permissionOverwrites: PermissionOverwriteManager,
+	parent: CategoryChannelResolvable | null
 }
 
 export interface BackupVoiceChannel {

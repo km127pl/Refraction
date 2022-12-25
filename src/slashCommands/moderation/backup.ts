@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } from "discord.js";
+import { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits, ChannelType, TextChannel } from "discord.js";
 import { loadBackup, saveBackup } from "../../function/ServerBackup";
 import { SlashCommand } from "../../types";
 
@@ -18,15 +18,23 @@ const command: SlashCommand = {
 				// wtf
 				return;
 			}
+			interaction.deferReply();
 			await loadBackup(id, interaction.guildId, interaction.client);
-			interaction.reply({
-				embeds: [
-					new EmbedBuilder()
-						.setAuthor({ name: "Refraction" })
-						.setDescription("Backup loaded")
-						.setColor("#D14D3B")
-				]
-			});
+			// get the first channel
+			const channel = interaction?.guild?.channels.cache.filter(channel => channel.type == ChannelType.GuildText).first();
+			if (channel != null) {
+				(channel as TextChannel).send({
+					embeds: [
+						new EmbedBuilder()
+							.setAuthor({ name: "Refraction" })
+							.setDescription("Backup loaded")
+							.setColor("#D14D3B")
+							.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
+							.setTimestamp()
+					]
+				});
+			}
+
 		} else if (subcommand == "save") {
 			if (interaction.guildId == null) {
 				// wtf

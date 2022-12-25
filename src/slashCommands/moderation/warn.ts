@@ -45,7 +45,7 @@ const command: SlashCommand = {
 						.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
 						.setTimestamp()
 				]
-			}).catch(err => { // edit the embed to say additonally that the user could not be dm'd
+			}).catch(() => { // edit the embed to say additonally that the user could not be dm'd
 				interaction.editReply({
 					embeds: [
 						new EmbedBuilder()

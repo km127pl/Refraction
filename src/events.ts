@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 import { Client } from "discord.js";
 import { readdirSync } from "fs";
 import { join } from "path";
@@ -8,7 +9,7 @@ export default function registerEvents (client: Client) {
 
 	readdirSync(eventsDir).forEach(async file => {
 		if (!file.endsWith(".js")) return;
-		const event: BotEvent = (await import(`${eventsDir}/${file}`)).default;
+		const event: BotEvent = require(`${eventsDir}/${file}`).default;
 		event.once ?
 			client.once(event.name, (...args) => event.execute(...args))
 			:
