@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } from "discord.js"
+import { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits, User } from "discord.js"
 import { SlashCommand, Warn } from "../../types";
 
 const command: SlashCommand = {
@@ -9,12 +9,12 @@ const command: SlashCommand = {
 		.addStringOption(option => option.setName("id").setDescription("The id of the warn to remove").setRequired(true))
 		.setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 	execute: async interaction => {
-		const user = interaction.options.getUser("user", true)
-		const id = interaction.options.data[1].value as string;
+		const user : User = interaction.options.getUser("user") as User;
+		const id : string = interaction.options.get("id")?.value as string;
 
-		var warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || []
+		let warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || [];
 		warns = warns.filter(warn => warn.id !== id)
-		await interaction.client.db.set(`warns_${interaction.guildId}_${user.id}`, warns)
+		interaction.client.db.set(`warns_${interaction.guildId}_${user.id}`, warns)
 
 		interaction.reply({
 			embeds: [

@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits, APIEmbedField } from "discord.js"
+import { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits, APIEmbedField, User } from "discord.js"
 import { SlashCommand, Warn } from "../../types";
 
 const command: SlashCommand = {
@@ -9,9 +9,9 @@ const command: SlashCommand = {
 		.addIntegerOption(option => option.setName("amount").setDescription("The amount of warns to show").setRequired(false))
 		.setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 	execute: async interaction => {
-		const user = interaction.options.getUser("user", true)
+		const user : User = interaction.options.getUser("user", true);
 		const warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || []
-		const amount = interaction.options.data[0].value as number;
+		const amount : number = interaction.options.get("amount")?.value as number;
 
 		const toShow = warns.slice(0, amount || warns.length)
 		const warnFields : APIEmbedField[] = [];
