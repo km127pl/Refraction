@@ -43,3 +43,4 @@
 - [x] Split slash commands into multiple folders (moderation, utility, fun, etc.)
 - [ ] Remember to not mix require and import, and actually switch the dynamic require to import
 - [ ] Switch to github projects and not a markdown file, bruh
+- [x] There has to be a better way of getting interaction arguments than just guessing the index
