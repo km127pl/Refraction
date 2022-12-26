@@ -97,4 +97,44 @@ const loadBackup = async (backupId : string, serverId: Snowflake, client : Clien
 	return false;
 };
 
-export { saveBackup, loadBackup, getBackup };
+/**
+ * Delete a backup for a server
+ * @param backupId the id of the backup
+ * @param serverId the id of the server
+ * @returns if the deletion was successful
+ */
+const deleteBackup = async (backupId : string, serverId: Snowflake, client : Client) : Promise<boolean> => {
+	const backup : Backup = await getBackup(backupId, serverId, client);
+	if (backup) {
+		await client.db.delete(`backup_${serverId}_${backupId}`);
+		await client.db.set(`backups_${serverId}`, (await client.db.get(`backups_${serverId}`) || []).filter((id : string) => id !== backupId));
+		return true;
+	}
+
+	return false;
+};
+
+/**
+ * Check if a backup exists
+ * @param backupId the id of the backup
+ * @param serverId the id of the server
+ * @returns if the backup exists
+ */
+const backupExists = async (backupId : string, serverId: Snowflake, client : Client) : Promise<boolean> => {
+	return (await client.db.get(`backup_${serverId}_${backupId}`)) !== undefined;
+};
+
+/**
+ * Delete all backups for a server
+ * @param serverId the id of the server
+ */
+const deleteAllBackups = async (serverId: Snowflake, client : Client) : Promise<void> => {
+	const backups = await client.db.get(`backups_${serverId}`) || [];
+	for (const backup of backups) {
+		await deleteBackup(backup, serverId, client);
+	}
+};
+
+
+
+export { saveBackup, loadBackup, getBackup, deleteBackup, backupExists, deleteAllBackups };
