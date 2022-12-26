@@ -8,7 +8,7 @@ const command: SlashCommand = {
 		.setDescription("Clears messages")
 		.addIntegerOption(option => option.setName("amount").setDescription("The amount of messages to clear").setRequired(true).setMaxValue(100).setMinValue(1))
 		.setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages),
-	execute: interaction => {
+	execute: async interaction => {
 		const amount = interaction.options.data[0].value as number; // amount of messages to clear
 
 		if (amount > 100) {
@@ -25,7 +25,7 @@ const command: SlashCommand = {
 			})
 		} else {
 			var textChannel = interaction.channel as TextChannel;
-			textChannel.bulkDelete(amount + 1);
+			await textChannel.bulkDelete(amount);
 			interaction.reply({
 				embeds: [
 					new Embed({
