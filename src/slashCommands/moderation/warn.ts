@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits, User } from "discord.js"
+import { SlashCommandBuilder, PermissionFlagsBits } from "discord.js"
+import Embed from "../../function/Embed";
 import { SlashCommand, Warn } from "../../types";
 
 const command: SlashCommand = {
@@ -26,34 +27,22 @@ const command: SlashCommand = {
 
 		interaction.reply({
 			embeds: [
-				new EmbedBuilder()
-					.setAuthor({ name: "Refraction" })
+				new Embed({ addFooter: true, interaction, addTimestamp: true })
 					.setDescription(`🔨 **Warned**\n${user.tag} has been warned for **${reason}** with **${points} points**`)
-					.setColor("#D14D3B")
-					.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
-					.setTimestamp()
 			]
 		})
 		// dm the user
 		user.createDM().then(dm => {
 			dm.send({
 				embeds: [
-					new EmbedBuilder()
-						.setAuthor({ name: "Refraction" })
+					new Embed({ addFooter: true, interaction, addTimestamp: true })
 						.setDescription(`🔨 **Warned**\nYou have been warned in **${interaction?.guild?.name}** for **${reason}** with **${points} points**`)
-						.setColor("#D14D3B")
-						.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
-						.setTimestamp()
 				]
-			}).catch(_ => { // edit the embed to say additonally that the user could not be dm'd
+			}).catch(_err => { // edit the embed to say additonally that the user could not be dm'd
 				interaction.editReply({
 					embeds: [
-						new EmbedBuilder()
-							.setAuthor({ name: "Refraction" })
+						new Embed({ addFooter: true, interaction, addTimestamp: true })
 							.setDescription(`🔨 **Warned**\n${user.tag} has been warned for **${reason}** with **${points} points**\nAdditionally, the user could not be dm'd`)
-							.setColor("#D14D3B")
-							.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
-							.setTimestamp()
 					]
 				});
 			});

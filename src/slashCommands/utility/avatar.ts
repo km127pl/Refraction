@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
+import { SlashCommandBuilder } from "discord.js"
+import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -11,13 +12,11 @@ const command: SlashCommand = {
 
 		interaction.reply({
 			embeds: [
-				new EmbedBuilder()
-					.setAuthor({ name: "Refraction" })
+				new Embed({ addTimestamp: true, interaction })
 					.setDescription(`🖼️ **Avatar of ${user.tag}**\n [Click Here](${user.displayAvatarURL({ size: 4096 })})`)
-					.setColor(user.accentColor || "#D14D3B")
+					.setColor(user.accentColor || process.env.ACCENT_COLOR)
 					.setImage(user.displayAvatarURL({ size: 512 }))
 					.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
-					.setTimestamp()
 			]
 		})
 	},

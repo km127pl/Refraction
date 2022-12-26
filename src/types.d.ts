@@ -2,7 +2,7 @@
  * types declaration for discordjs slash commands
  * credits to MericcaN41 & davidotno, https://github.com/MericcaN41/discordjs-v14-template-ts/blob/main/src/types.d.ts
  */
-import { SlashCommandBuilder, CommandInteraction, Collection, PermissionResolvable, Message, AutocompleteInteraction } from "discord.js"
+import { SlashCommandBuilder, CommandInteraction, Collection, PermissionResolvable, Message, AutocompleteInteraction, ColorResolvable } from "discord.js"
 import Keyv from "keyv"
 
 export interface SlashCommand {
@@ -35,7 +35,15 @@ export type GuildOption = keyof GuildOptions
 export interface BotEvent {
 	name: string,
 	once?: boolean | false,
-	execute: (...args?) => void
+	execute: (...args: any) => void
+}
+
+export interface EmbedOptions {
+	addTimestamp?: boolean;
+	addFooter?: boolean;
+	timestamp?: Date;
+	color?: ColorResolvable;
+	interaction?: CommandInteraction;
 }
 
 declare global {
@@ -46,6 +54,8 @@ declare global {
 			PUBLIC_KEY: string,
 			ENABLE_STATISTICS: boolean,
 			STATISTICS_AUTH_TOKEN: string,
+			ACCENT_COLOR: ColorResolvable,
+			NAME: string
 		}
 	}
 }

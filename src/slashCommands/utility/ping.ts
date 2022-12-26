@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
+import { SlashCommandBuilder } from "discord.js"
+import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -8,10 +9,8 @@ const command: SlashCommand = {
 	execute: interaction => {
 		interaction.reply({
 			embeds: [
-				new EmbedBuilder()
-					.setAuthor({ name: "Refraction" })
+				new Embed()
 					.setDescription(`🏓 **Pong!**\n 📡 Ping: ${interaction.client.ws.ping}`)
-					.setColor("#D14D3B")
 			]
 		})
 	},

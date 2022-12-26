@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder, User } from "discord.js"
+import { SlashCommandBuilder } from "discord.js"
+import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -12,8 +13,7 @@ const command: SlashCommand = {
 
 		interaction.reply({
 			embeds: [
-				new EmbedBuilder()
-					.setAuthor({ name: "Refraction" })
+				new Embed({ addFooter: true, interaction, addTimestamp: true })
 					.addFields([
 						{ name: "👤 Username", value: `${user.username}#${user.discriminator}`, inline: true },
 						{ name: "🆔 ID", value: user.id, inline: true },
@@ -26,8 +26,6 @@ const command: SlashCommand = {
 					])
 					.setColor(user.accentColor || "#FFFFFF")
 					.setThumbnail(user.avatarURL())
-					.setFooter({ text: `Requested by ${interaction.user.username}` })
-					.setTimestamp()
 			]
 		})
 	},

@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder, TextChannel, PermissionFlagsBits } from "discord.js"
+import { SlashCommandBuilder, TextChannel, PermissionFlagsBits } from "discord.js"
+import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -19,12 +20,8 @@ const command: SlashCommand = {
 			interaction.client.db.set(`joinChannel_${interaction.guildId}`, channel.id);
 			interaction.reply({
 				embeds: [
-					new EmbedBuilder()
-						.setAuthor({ name: "Refraction" })
+					new Embed({ addFooter: true, interaction, addTimestamp: true })
 						.setDescription(`Set join message to \`${message}\``)
-						.setTimestamp()
-						.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 512 }) })
-						.setColor("#D14D3B")
 				]
 			})
 		} else if (subcommand === "leave") {
@@ -33,12 +30,8 @@ const command: SlashCommand = {
 			interaction.client.db.set(`leaveChannel_${interaction.guildId}`, channel.id);
 			interaction.reply({
 				embeds: [
-					new EmbedBuilder()
-						.setAuthor({ name: "Refraction" })
+					new Embed({ addFooter: true, interaction, addTimestamp: true })
 						.setDescription(`Set leave message to \`${message}\``)
-						.setTimestamp()
-						.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 512 }) })
-						.setColor("#D14D3B")
 				]
 			})
 		}
