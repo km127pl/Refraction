@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "discord.js"
+import { SlashCommandBuilder } from "discord.js";
 import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
@@ -11,7 +11,7 @@ const command: SlashCommand = {
 		interaction.user.send({
 			embeds: [
 				new Embed()
-					.setDescription(`🔗 **Invite:**\n https://refraction.us.to/add`)
+					.setDescription("🔗 **Invite:**\n https://refraction.us.to/add")
 			]
 		}).catch(() => { // if the user has DMs disabled
 			interaction.reply({
@@ -20,9 +20,9 @@ const command: SlashCommand = {
 						.setDescription(`🔗 **Invite:**\n https://refraction.us.to/add`)
 				], ephemeral: true
 			});
-		})
+		});
 	},
 	cooldown: 10
-}
+};
 
-export default command
+export default command;

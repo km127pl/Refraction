@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "discord.js"
+import { SlashCommandBuilder } from "discord.js";
 import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
@@ -27,9 +27,9 @@ const command: SlashCommand = {
 						{ name: "📁 Commands", value: `${interaction.client.slashCommands.size}`, inline: true  },
 					])
 			]
-		})
+		});
 	},
 	cooldown: 10
-}
+};
 
-export default command
+export default command;

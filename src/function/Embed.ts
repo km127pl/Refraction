@@ -10,7 +10,7 @@ export class Embed extends EmbedBuilder {
 		}
 
 		if (opts?.addFooter && opts?.interaction) {
-			this.setFooter({ text: `Requested by ${opts.interaction.user.username}` })
+			this.setFooter({ text: `Requested by ${opts.interaction.user.username}` });
 		}
 
 		this.setColor(opts?.color || process.env.ACCENT_COLOR || "#ffffff");

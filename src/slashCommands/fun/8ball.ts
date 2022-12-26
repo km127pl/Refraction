@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "discord.js"
+import { SlashCommandBuilder } from "discord.js";
 import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
@@ -30,7 +30,7 @@ const command: SlashCommand = {
 			"My sources say no.",
 			"Outlook not so good.",
 			"Very doubtful."
-		]
+		];
 
 		// send a "thinking" message
 		interaction.reply({
@@ -38,10 +38,10 @@ const command: SlashCommand = {
 				new Embed({ addTimestamp: true })
 					.setDescription("🤔 Thinking...")
 			]
-		})
+		});
 
 		// get a random response
-		const response = responses[Math.floor(Math.random() * responses.length)]
+		const response = responses[Math.floor(Math.random() * responses.length)];
 
 		// edit the "thinking" message to the response after 2 seconds
 		setTimeout(() => {
@@ -50,10 +50,10 @@ const command: SlashCommand = {
 					new Embed({ addTimestamp: true })
 						.setDescription(`🎱 ${response}`)
 				]
-			})
-		}, 2000)
+			});
+		}, 2000);
 	},
 	cooldown: 10
-}
+};
 
-export default command
+export default command;

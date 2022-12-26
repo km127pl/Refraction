@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "discord.js"
+import { SlashCommandBuilder } from "discord.js";
 import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
@@ -29,10 +29,10 @@ const command: SlashCommand = {
 				new Embed()
 					.setDescription(`🪨 **Rock Paper Scissors**\n${choice == botChoice ? "It's a tie!" : userWins ? "You win!" : botWins ? "You lose!" : "Something went wrong"}`)
 			]
-		})
+		});
 
 	},
 	cooldown: 10
-}
+};
 
 export default command;

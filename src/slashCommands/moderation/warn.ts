@@ -14,23 +14,23 @@ const command: SlashCommand = {
 		const user : User = interaction.options.getUser("user", true);
 		const reason : string = interaction.options.get("reason")?.value as string;
 		const points : number = interaction.options.get("points")?.value as number;
-		const warnId : string = `warns_${interaction.guildId}_${user.id}_${Date.now()}`
+		const warnId = `warns_${interaction.guildId}_${user.id}_${Date.now()}`;
 
-		let warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || []
+		const warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || [];
 		const warn = {
 			id: warnId,
 			reason: reason,
 			points: points
-		} as Warn
+		} as Warn;
 		warns.push(warn);
-		await interaction.client.db.set(`warns_${interaction.guildId}_${user.id}`, warns)
+		await interaction.client.db.set(`warns_${interaction.guildId}_${user.id}`, warns);
 
 		interaction.reply({
 			embeds: [
 				new Embed({ addFooter: true, interaction, addTimestamp: true })
 					.setDescription(`🔨 **Warned**\n${user.tag} has been warned for **${reason}** with **${points} points**`)
 			]
-		})
+		});
 		// dm the user
 		user.createDM().then(dm => {
 			dm.send({
@@ -38,6 +38,7 @@ const command: SlashCommand = {
 					new Embed({ addFooter: true, interaction, addTimestamp: true })
 						.setDescription(`🔨 **Warned**\nYou have been warned in **${interaction?.guild?.name}** for **${reason}** with **${points} points**`)
 				]
+			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			}).catch(_err => { // edit the embed to say additonally that the user could not be dm'd
 				interaction.editReply({
 					embeds: [
@@ -50,4 +51,4 @@ const command: SlashCommand = {
 	}
 };
 
-export default command
+export default command;

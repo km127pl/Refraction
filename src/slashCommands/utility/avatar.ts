@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "discord.js"
+import { SlashCommandBuilder } from "discord.js";
 import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
@@ -18,9 +18,9 @@ const command: SlashCommand = {
 					.setImage(user.displayAvatarURL({ size: 512 }))
 					.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
 			]
-		})
+		});
 	},
 	cooldown: 10
-}
+};
 
-export default command
+export default command;

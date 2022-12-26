@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "discord.js"
+import { SlashCommandBuilder } from "discord.js";
 import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
@@ -12,9 +12,9 @@ const command: SlashCommand = {
 				new Embed({ addTimestamp: false })
 					.setDescription(`🎲 **Dice**\n ${Math.floor(Math.random() * 6) + 1}`)
 			]
-		})
+		});
 	},
 	cooldown: 10
-}
+};
 
-export default command
+export default command;

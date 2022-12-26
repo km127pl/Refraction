@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, PermissionFlagsBits, APIEmbedField, User } from "discord.js"
+import { SlashCommandBuilder, PermissionFlagsBits, APIEmbedField, User } from "discord.js";
 import Embed from "../../function/Embed";
 import { SlashCommand, Warn } from "../../types";
 
@@ -12,16 +12,17 @@ const command: SlashCommand = {
 	execute: async interaction => {
 		const user : User = interaction.options.getUser("user", true);
 		const warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || []
+
 		const amount : number = interaction.options.get("amount")?.value as number;
 
-		const toShow = warns.slice(0, amount || warns.length)
+		const toShow = warns.slice(0, amount || warns.length);
 		const warnFields : APIEmbedField[] = [];
 
 		for (const warn of toShow) {
 			warnFields.push({
 				name: `Warn ${warn.id}`,
 				value: `**Reason:** ${warn.reason}\n**Points:** ${warn.points}`
-			})
+			});
 		}
 
 		interaction.reply({
@@ -30,8 +31,8 @@ const command: SlashCommand = {
 					.setDescription(`🔨 **Warns**\n${user.tag} has ${warns.length} warns`)
 					.addFields(warnFields)
 			]
-		})
+		});
 	}
-}
+};
 
-export default command
+export default command;

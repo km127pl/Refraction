@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, User } from "discord.js"
+import { SlashCommandBuilder, User } from "discord.js";
 import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
@@ -27,9 +27,9 @@ const command: SlashCommand = {
 					.setColor(user.accentColor || "#FFFFFF")
 					.setThumbnail(user.avatarURL())
 			]
-		})
+		});
 	},
 	cooldown: 10
-}
+};
 
-export default command
+export default command;

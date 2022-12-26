@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "discord.js"
+import { SlashCommandBuilder } from "discord.js";
 import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
@@ -18,9 +18,9 @@ const command: SlashCommand = {
 				new Embed({ addTimestamp: true, interaction })
 					.setDescription(`🕒 **Uptime:**\n ${days}d:${hours}h:${minutes}m:${seconds}s\n Since ${new Date(interaction.client.readyTimestamp).toLocaleString()}`)
 			]
-		})
+		});
 	},
 	cooldown: 10
-}
+};
 
-export default command
+export default command;

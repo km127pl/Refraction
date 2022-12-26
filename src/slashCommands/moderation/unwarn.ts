@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, PermissionFlagsBits, User } from "discord.js"
+import { SlashCommandBuilder, PermissionFlagsBits, User } from "discord.js";
 import Embed from "../../function/Embed";
 import { SlashCommand, Warn } from "../../types";
 
@@ -14,16 +14,17 @@ const command: SlashCommand = {
 		const id : string = interaction.options.get("id")?.value as string;
 
 		let warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || [];
-		warns = warns.filter(warn => warn.id !== id)
-		interaction.client.db.set(`warns_${interaction.guildId}_${user.id}`, warns)
+
+		warns = warns.filter(warn => warn.id !== id);
+		interaction.client.db.set(`warns_${interaction.guildId}_${user.id}`, warns);
 
 		interaction.reply({
 			embeds: [
 				new Embed({ addFooter: true, interaction, addTimestamp: true })
 					.setDescription(`🔨 **Unwarned**\n${user.tag} has been unwarned`)
 			]
-		})
+		});
 	}
-}
+};
 
-export default command
+export default command;

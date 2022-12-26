@@ -4,9 +4,9 @@ import { BotEvent } from "../types";
 import svg2png from "svg2png";
 
 const event : BotEvent = {
-    name: "guildMemberAdd",
-    once: false,
-    execute: async (member: GuildMember) => {
+	name: "guildMemberAdd",
+	once: false,
+	execute: async (member: GuildMember) => {
 		const message = await client.db.get(`joinMessage_${member.guild.id}`);
 		const channelId = await client.db.get(`joinChannel_${member.guild.id}`);
 		const banner : Buffer = Buffer.from(welcomeBanner.replace(/{USER:NAME}/g, member.user.username).replace(/{SERVER:NAME}/g, member.guild.name));
@@ -25,7 +25,7 @@ const event : BotEvent = {
 				});
 			}
 		}
-    }
-}
+	}
+};
 
 export default event;
