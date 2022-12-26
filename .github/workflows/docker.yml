@@ -1,11 +1,7 @@
-name: Build and push Docker images
-uses: docker/build-push-action@v3.2.0
+name: Docker Image CI
 
 on:
   push:
-    branches:
-      - 'main'
-  pull_request:
     branches:
       - 'main'
 
@@ -30,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: km127pl/refraction:latest
+          tags: user/app:latest
