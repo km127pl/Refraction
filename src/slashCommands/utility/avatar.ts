@@ -8,7 +8,8 @@ const command: SlashCommand = {
 		.setDescription("Gets the avatar of a user")
 		.addUserOption(option => option.setName("user").setDescription("The user to get the avatar of")),
 	execute: interaction => {
-		const user = interaction.options.getUser("user") || interaction.user
+		const user = interaction.options.getUser("user") || interaction.user;
+
 		interaction.reply({
 			embeds: [
 				new Embed({ addTimestamp: true, interaction })

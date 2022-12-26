@@ -9,7 +9,7 @@ const command: SlashCommand = {
 		.addIntegerOption(option => option.setName("amount").setDescription("The amount of seconds to set the slowmode to").setRequired(true).setMaxValue(21600).setMinValue(0))
 		.setDefaultMemberPermissions(PermissionFlagsBits.ManageChannels),
 	execute: interaction => {
-		const amount = interaction.options.data[0].value as number; // amount of seconds to set the slowmode to
+		const amount : number = interaction.options.get("amount")?.value as number;
 
 		if (amount > 21600) {
 			interaction.reply({

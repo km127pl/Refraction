@@ -9,7 +9,7 @@ const command: SlashCommand = {
 		.addIntegerOption(option => option.setName("amount").setDescription("The amount of messages to clear").setRequired(true).setMaxValue(100).setMinValue(1))
 		.setDefaultMemberPermissions(PermissionFlagsBits.ManageMessages),
 	execute: async interaction => {
-		const amount = interaction.options.data[0].value as number; // amount of messages to clear
+		const amount : number = interaction.options.get("amount")?.value as number;
 
 		if (amount > 100) {
 			interaction.reply({

@@ -11,12 +11,12 @@ const command: SlashCommand = {
 		.addIntegerOption(option => option.setName("points").setDescription("The amount of points to warn the user with").setRequired(true))
 		.setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 	execute: async interaction => {
-		const user = interaction.options.getUser("user", true)
-		const reason = interaction.options.data[1].value as string
-		const points = interaction.options.data[2].value as number
-		const warnId = `warns_${interaction.guildId}_${user.id}_${Date.now()}`
+		const user : User = interaction.options.getUser("user", true);
+		const reason : string = interaction.options.get("reason")?.value as string;
+		const points : number = interaction.options.get("points")?.value as number;
+		const warnId : string = `warns_${interaction.guildId}_${user.id}_${Date.now()}`
 
-		var warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || []
+		let warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || []
 		const warn = {
 			id: warnId,
 			reason: reason,

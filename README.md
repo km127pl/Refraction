@@ -23,7 +23,7 @@ To add Refraction to your Discord server, simply follow these steps:
 Refraction is built using [TypeScript](https://www.typescriptlang.org/) and [Discord.js](https://discord.js.org/). To build Refraction, you will need to have [Node.js](https://nodejs.org/en/) installed on your machine. Once you have Node.js installed, you can build Refraction by following these steps:
 - Clone the repository using `git clone https://github.com/km127pl/refraction`
 - Install the dependencies using `npm install`
-- Build the project using `tsc`
+- Build the project using `npm run build`
 - Copy the `.env.example` file to `.env` and fill in the required values
 - Run the project using `node dist/index.js`
 
@@ -44,6 +44,6 @@ Refraction is licensed under the GNU AGPL license. For more information, see the
 
 Refraction was developed by km127pl with the help of the following open source projects:
 
-[Discord.js v14 Template]( https://github.com/MericcaN41/discordjs-v14-template-ts/blob/main/src/types.d.ts)
+[Discord.js v14 Template](https://github.com/MericcaN41/discordjs-v14-template-ts/)
 
 We are grateful to the developers of these projects for their contributions and support.
