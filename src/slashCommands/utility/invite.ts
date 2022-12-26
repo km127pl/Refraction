@@ -17,7 +17,7 @@ const command: SlashCommand = {
 			interaction.reply({
 				embeds: [
 					new Embed()
-						.setDescription(`🔗 **Invite:**\n https://refraction.us.to/add`)
+						.setDescription("🔗 **Invite:**\n https://refraction.us.to/add")
 				], ephemeral: true
 			});
 		});

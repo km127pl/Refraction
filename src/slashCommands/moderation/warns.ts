@@ -11,7 +11,7 @@ const command: SlashCommand = {
 		.setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 	execute: async interaction => {
 		const user : User = interaction.options.getUser("user", true);
-		const warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || []
+		const warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || [];
 
 		const amount : number = interaction.options.get("amount")?.value as number;
 

@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, PermissionFlagsBits, User } from "discord.js"
+import { SlashCommandBuilder, PermissionFlagsBits, User } from "discord.js";
 import Embed from "../../function/Embed";
 import { SlashCommand, Warn } from "../../types";
 
