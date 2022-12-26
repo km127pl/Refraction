@@ -1,6 +1,6 @@
 import { SlashCommandBuilder, PermissionFlagsBits, ChannelType, TextChannel } from "discord.js";
 import Embed from "../../function/Embed";
-import { loadBackup, saveBackup } from "../../function/ServerBackup";
+import { deleteAllBackups, loadBackup, saveBackup } from "../../function/ServerBackup";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -15,10 +15,10 @@ const command: SlashCommand = {
 	execute: async interaction => {
 		const subcommand = interaction.options.data[0].name;
 		const id = interaction.options.get("id")?.value as string;
+		if (interaction.guildId == null) {
+			throw new Error("Guild does not have an ID, how did this happen?");
+		}
 		if (subcommand == "load") {
-			if (interaction.guildId == null) {
-				throw new Error("Guild does not have an ID, how did this happen?");
-			}
 			interaction.deferReply();
 			await loadBackup(id, interaction.guildId, interaction.client);
 			// get the first channel
@@ -33,9 +33,6 @@ const command: SlashCommand = {
 			}
 
 		} else if (subcommand == "save") {
-			if (interaction.guildId == null) {
-				throw new Error("Guild does not have an ID, how did this happen?");
-			}
 			const backup = await saveBackup(interaction.guildId, interaction.client);
 			interaction.reply({
 				embeds: [
@@ -44,9 +41,6 @@ const command: SlashCommand = {
 				]
 			});
 		} else if (subcommand == "list") {
-			if (interaction.guildId == null) {
-				throw new Error("Guild does not have an ID, how did this happen?");
-			}
 			const backups = await interaction.client.db.get(`backups_${interaction.guildId}`);
 			if (backups == null || backups.length == 0 || backups.length == undefined || backups == undefined) {
 				interaction.reply({
@@ -65,8 +59,17 @@ const command: SlashCommand = {
 			});
 		} else if (subcommand == "delete") {
 			// check if the backup exists and this guild is the owner
-			if (interaction.guildId == null) {
-				throw new Error("Guild does not have an ID, how did this happen?");
+
+
+			if (id.toLowerCase() == "all") {
+				await deleteAllBackups(interaction.guildId, interaction.client);
+				interaction.reply({
+					embeds: [
+						new Embed({ addTimestamp: true, interaction, addFooter: true })
+							.setDescription("All backups were deleted")
+					]
+				});
+				return;
 			}
 
 			const backups = await interaction.client.db.get(`backups_${interaction.guildId}`);

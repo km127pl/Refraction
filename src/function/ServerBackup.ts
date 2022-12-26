@@ -22,9 +22,26 @@ const saveBackup = async (serverId: Snowflake, client : Client) : Promise<Backup
 	let result = channels.next();
 	while (!result.done) {
 		if (result.value instanceof TextChannel) {
-			backup.channels.text.push(result.value as BackupTextChannel);
+			const parentCategoryName = result.value.parent ? result.value.parent.name : undefined;
+			backup.channels.text.push({
+				name: result.value.name,
+				type: result.value.type,
+				permissionOverwrites: result.value.permissionOverwrites,
+				id: result.value.id,
+				topic: result.value.topic,
+				rateLimitPerUser: result.value.rateLimitPerUser,
+				parent: result.value.parent,
+				parentCategoryName
+			} as BackupTextChannel);
 		} else if (result.value instanceof VoiceChannel) {
-			backup.channels.voice.push(result.value as BackupVoiceChannel);
+			const parentCategoryName = result.value.parent ? result.value.parent.name : undefined;
+			backup.channels.voice.push({
+				name: result.value.name,
+				type: result.value.type,
+				permissionOverwrites: result.value.permissionOverwrites,
+				id: result.value.id,
+				parentCategoryName
+			} as BackupVoiceChannel);
 		} else if (result.value instanceof CategoryChannel) {
 			backup.channels.category.push(result.value as BackupCategoryChannel);
 		}
@@ -66,13 +83,13 @@ const loadBackup = async (backupId : string, serverId: Snowflake, client : Clien
 		}
 
 		// Create all channels
+		const categories : CategoryChannel[] = [];
 		for (const channel of backupChannels.category) {
-			await guild.channels.create({
+			const category = await guild.channels.create({
 				name: channel.name,
 				type: channel.type,
-				permissionOverwrites: channel.permissionOverwrites,
-				nsfw: channel.nsfw,
-			});
+			}) as CategoryChannel;
+			categories.push(category);
 		}
 
 		for (const channel of backupChannels.text) {
@@ -80,7 +97,7 @@ const loadBackup = async (backupId : string, serverId: Snowflake, client : Clien
 				name: channel.name,
 				type: channel.type,
 				rateLimitPerUser: channel.rateLimitPerUser,
-				parent: channel.parent,
+				parent: categories.find((category) => category.name === channel.parentCategoryName),
 			});
 		}
 
@@ -88,6 +105,7 @@ const loadBackup = async (backupId : string, serverId: Snowflake, client : Clien
 			await guild.channels.create({
 				name: channel.name,
 				type: channel.type,
+				parent: categories.find((category) => category.name === channel.parentCategoryName),
 			});
 		}
 

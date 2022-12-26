@@ -42,14 +42,16 @@ export interface BackupTextChannel {
 	rateLimitPerUser: number,
 	type: number,
 	permissionOverwrites: PermissionOverwriteManager,
-	parent: CategoryChannelResolvable | null
+	parent: CategoryChannelResolvable | null,
+	parentCategoryName: string
 }
 
 export interface BackupVoiceChannel {
 	id: string,
 	name: string,
 	type: number,
-	permissionOverwrites: PermissionOverwriteManager
+	permissionOverwrites: PermissionOverwriteManager,
+	parentCategoryName: string
 }
 
 export interface BackupCategoryChannel {
