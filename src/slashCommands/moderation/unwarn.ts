@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } from "discord.js"
+import { SlashCommandBuilder, PermissionFlagsBits } from "discord.js"
+import Embed from "../../function/Embed";
 import { SlashCommand, Warn } from "../../types";
 
 const command: SlashCommand = {
@@ -18,12 +19,8 @@ const command: SlashCommand = {
 
 		interaction.reply({
 			embeds: [
-				new EmbedBuilder()
-					.setAuthor({ name: "Refraction" })
+				new Embed({ addFooter: true, interaction, addTimestamp: true })
 					.setDescription(`🔨 **Unwarned**\n${user.tag} has been unwarned`)
-					.setColor("#D14D3B")
-					.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
-					.setTimestamp()
 			]
 		})
 	}

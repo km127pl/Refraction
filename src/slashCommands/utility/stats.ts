@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
+import { SlashCommandBuilder } from "discord.js"
+import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -15,8 +16,7 @@ const command: SlashCommand = {
 
 		interaction.reply({
 			embeds: [
-				new EmbedBuilder()
-					.setAuthor({ name: "Refraction" })
+				new Embed()
 					.addFields([
 						{ name: "🏓 Ping", value: `${interaction.client.ws.ping}`, inline: true  },
 						{ name: "🕒 Uptime", value: `${days}d:${hours}h:${minutes}m:${seconds}s`, inline: true },
@@ -26,7 +26,6 @@ const command: SlashCommand = {
 						{ name: "👥 Users", value: `${interaction.client.users.cache.size}`, inline: true  },
 						{ name: "📁 Commands", value: `${interaction.client.slashCommands.size}`, inline: true  },
 					])
-					.setColor("#D14D3B")
 			]
 		})
 	},

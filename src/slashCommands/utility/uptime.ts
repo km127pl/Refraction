@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js"
+import { SlashCommandBuilder } from "discord.js"
+import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -14,10 +15,8 @@ const command: SlashCommand = {
 
 		interaction.reply({
 			embeds: [
-				new EmbedBuilder()
-					.setAuthor({ name: "Refraction" })
+				new Embed({ addTimestamp: true, interaction })
 					.setDescription(`🕒 **Uptime:**\n ${days}d:${hours}h:${minutes}m:${seconds}s\n Since ${new Date(interaction.client.readyTimestamp).toLocaleString()}`)
-					.setColor("#D14D3B")
 			]
 		})
 	},

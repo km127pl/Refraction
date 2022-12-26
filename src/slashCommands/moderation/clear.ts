@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder, TextChannel, PermissionFlagsBits } from "discord.js"
+import { SlashCommandBuilder, TextChannel, PermissionFlagsBits } from "discord.js"
+import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -13,19 +14,13 @@ const command: SlashCommand = {
 		if (amount > 100) {
 			interaction.reply({
 				embeds: [
-					new EmbedBuilder()
-						.setAuthor({ name: "Refraction" })
-						.setDescription("You can only clear up to 100 messages at a time")
-						.setColor("#D14D3B")
+					new Embed().setDescription("You can only clear up to 100 messages at a time")
 				]
 			})
 		} else if (amount < 1) {
 			interaction.reply({
 				embeds: [
-					new EmbedBuilder()
-						.setAuthor({ name: "Refraction" })
-						.setDescription("You must clear at least 1 message")
-						.setColor("#D14D3B")
+					new Embed().setDescription("You must clear at least 1 message")
 				]
 			})
 		} else {
@@ -33,10 +28,11 @@ const command: SlashCommand = {
 			textChannel.bulkDelete(amount + 1);
 			interaction.reply({
 				embeds: [
-					new EmbedBuilder()
-						.setAuthor({ name: "Refraction" })
-						.setDescription(`Cleared ${amount} messages`)
-						.setColor("#D14D3B")
+					new Embed({
+						addFooter: true,
+						interaction,
+						addTimestamp: true
+					}).setDescription(`Cleared ${amount} messages`)
 				]
 			})
 		}

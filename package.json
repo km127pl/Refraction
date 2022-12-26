@@ -12,7 +12,8 @@
 	"test": "npm run build && npm run start",
 	"test:docker": "npm run build:docker && npm run start:docker",
 	"scan:docker": "docker scan refraction",
-	"dev": "npx tsc -w"
+	"dev": "npx tsc -w",
+	"lint": "npx eslint . --ext .ts"
   },
   "repository": {
     "type": "git",
