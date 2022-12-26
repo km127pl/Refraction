@@ -14,6 +14,7 @@ const command: SlashCommand = {
 		const id : string = interaction.options.get("id")?.value as string;
 
 		let warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || [];
+
 		warns = warns.filter(warn => warn.id !== id);
 		interaction.client.db.set(`warns_${interaction.guildId}_${user.id}`, warns);
 

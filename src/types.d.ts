@@ -83,7 +83,15 @@ export type GuildOption = keyof GuildOptions
 export interface BotEvent {
 	name: string,
 	once?: boolean | false,
-	execute: (...args?) => void
+	execute: (...args: any) => void
+}
+
+export interface EmbedOptions {
+	addTimestamp?: boolean;
+	addFooter?: boolean;
+	timestamp?: Date;
+	color?: ColorResolvable;
+	interaction?: CommandInteraction;
 }
 
 declare global {

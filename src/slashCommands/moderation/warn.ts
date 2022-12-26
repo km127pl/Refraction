@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, PermissionFlagsBits, User } from "discord.js";
+import { SlashCommandBuilder, PermissionFlagsBits, User } from "discord.js"
 import Embed from "../../function/Embed";
 import { SlashCommand, Warn } from "../../types";
 
@@ -14,7 +14,7 @@ const command: SlashCommand = {
 		const user : User = interaction.options.getUser("user", true);
 		const reason : string = interaction.options.get("reason")?.value as string;
 		const points : number = interaction.options.get("points")?.value as number;
-		const warnId  = `warns_${interaction.guildId}_${user.id}_${Date.now()}`;
+		const warnId = `warns_${interaction.guildId}_${user.id}_${Date.now()}`;
 
 		const warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || [];
 		const warn = {
