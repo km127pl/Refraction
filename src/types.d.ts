@@ -21,6 +21,14 @@ export interface Command {
 	cooldown?: number,
 }
 
+export interface EmbedOptions {
+	addTimestamp?: boolean;
+	addFooter?: boolean;
+	timestamp?: Date;
+	color?: ColorResolvable;
+	interaction?: CommandInteraction;
+}
+
 
 export interface BackupInfo {
 	id: string,
@@ -84,6 +92,8 @@ declare global {
 			PUBLIC_KEY: string,
 			ENABLE_STATISTICS: boolean,
 			STATISTICS_AUTH_TOKEN: string,
+			ACCENT_COLOR: ColorResolvable,
+			NAME: string
 		}
 	}
 }

@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
+import { SlashCommandBuilder, User } from "discord.js";
+import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -7,12 +8,12 @@ const command: SlashCommand = {
 		.setDescription("Shows information about a user")
 		.addUserOption(option => option.setName("user").setDescription("The user to get information about")),
 	execute: interaction => {
-		const user = interaction.options.getUser("user") || interaction.user;
-		const userCreated = interaction?.guild?.members?.cache?.get(user.id)?.joinedTimestamp || user.createdTimestamp;
+		const user : User = interaction.options.getUser("user") || interaction.user;
+		const userCreated : number = interaction?.guild?.members?.cache?.get(user.id)?.joinedTimestamp || user.createdTimestamp;
+
 		interaction.reply({
 			embeds: [
-				new EmbedBuilder()
-					.setAuthor({ name: "Refraction" })
+				new Embed({ addFooter: true, interaction, addTimestamp: true })
 					.addFields([
 						{ name: "👤 Username", value: `${user.username}#${user.discriminator}`, inline: true },
 						{ name: "🆔 ID", value: user.id, inline: true },
@@ -25,8 +26,6 @@ const command: SlashCommand = {
 					])
 					.setColor(user.accentColor || "#FFFFFF")
 					.setThumbnail(user.avatarURL())
-					.setFooter({ text: `Requested by ${interaction.user.username}` })
-					.setTimestamp()
 			]
 		});
 	},

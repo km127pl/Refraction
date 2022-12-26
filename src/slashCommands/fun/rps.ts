@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
+import { SlashCommandBuilder } from "discord.js";
+import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -16,19 +17,17 @@ const command: SlashCommand = {
 			value: "scissors"
 		}).setName("choice").setDescription("Your choice").setRequired(true)),
 	execute: interaction => {
-		const choice = interaction.options.data[0].value as string; // user's choice
-		const choices = ["rock", "paper", "scissors"]; // choices
-		const botChoice = choices[Math.floor(Math.random() * choices.length)]; // bot's choice
+		const choice : string = interaction.options.get("choice")?.value as string;
+		const choices : Array<string> = ["rock", "paper", "scissors"]; // choices
+		const botChoice : string = choices[Math.floor(Math.random() * choices.length)]; // bot's choice
 
-		const botWins = (choice == "rock" && botChoice == "paper") || (choice == "paper" && botChoice == "scissors") || (choice == "scissors" && botChoice == "rock"); // if bot wins
-		const userWins = (choice == "rock" && botChoice == "scissors") || (choice == "paper" && botChoice == "rock") || (choice == "scissors" && botChoice == "paper"); // if user wins
+		const botWins : boolean = (choice == "rock" && botChoice == "paper") || (choice == "paper" && botChoice == "scissors") || (choice == "scissors" && botChoice == "rock"); // if bot wins
+		const userWins : boolean = (choice == "rock" && botChoice == "scissors") || (choice == "paper" && botChoice == "rock") || (choice == "scissors" && botChoice == "paper"); // if user wins
 
 		interaction.reply({
 			embeds: [
-				new EmbedBuilder()
-					.setAuthor({ name: "Refraction" })
+				new Embed()
 					.setDescription(`🪨 **Rock Paper Scissors**\n${choice == botChoice ? "It's a tie!" : userWins ? "You win!" : botWins ? "You lose!" : "Something went wrong"}`)
-					.setColor("#D14D3B")
 			]
 		});
 

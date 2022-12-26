@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
+import { SlashCommandBuilder } from "discord.js";
+import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -34,11 +35,8 @@ const command: SlashCommand = {
 		// send a "thinking" message
 		interaction.reply({
 			embeds: [
-				new EmbedBuilder()
-					.setAuthor({ name: "Refraction" })
+				new Embed({ addTimestamp: true })
 					.setDescription("🤔 Thinking...")
-					.setColor("#D14D3B")
-					.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
 			]
 		});
 
@@ -49,12 +47,8 @@ const command: SlashCommand = {
 		setTimeout(() => {
 			interaction.editReply({
 				embeds: [
-					new EmbedBuilder()
-						.setAuthor({ name: "Refraction" })
+					new Embed({ addTimestamp: true })
 						.setDescription(`🎱 ${response}`)
-						.setColor("#D14D6B")
-						.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
-						.setTimestamp()
 				]
 			});
 		}, 2000);

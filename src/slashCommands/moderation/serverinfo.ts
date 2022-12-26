@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
+import { SlashCommandBuilder } from "discord.js";
+import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -9,10 +10,8 @@ const command: SlashCommand = {
 		const guild = interaction.guild;
 		if (!guild) return interaction.reply({
 			embeds: [
-				new EmbedBuilder()
-					.setAuthor({ name: "Refraction" })
+				new Embed()
 					.setDescription("❌ This command can only be used in a server")
-					.setColor("#D14D3B")
 			]
 		});
 
@@ -21,7 +20,7 @@ const command: SlashCommand = {
 
 		interaction.reply({
 			embeds: [
-				new EmbedBuilder()
+				new Embed()
 					.setAuthor({ name: "Refraction" })
 					.addFields([
 						{ name: "📋 Name", value: guild.name, inline: true },
@@ -35,8 +34,6 @@ const command: SlashCommand = {
 					])
 					.setColor("#FFFFFF")
 					.setThumbnail(guild.iconURL())
-					.setFooter({ text: `Requested by ${interaction.user.username}` })
-					.setTimestamp()
 			]
 		});
 	},

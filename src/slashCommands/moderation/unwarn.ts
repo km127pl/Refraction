@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder, PermissionFlagsBits } from "discord.js";
+import { SlashCommandBuilder, PermissionFlagsBits, User } from "discord.js";
+import Embed from "../../function/Embed";
 import { SlashCommand, Warn } from "../../types";
 
 const command: SlashCommand = {
@@ -9,21 +10,17 @@ const command: SlashCommand = {
 		.addStringOption(option => option.setName("id").setDescription("The id of the warn to remove").setRequired(true))
 		.setDefaultMemberPermissions(PermissionFlagsBits.KickMembers),
 	execute: async interaction => {
-		const user = interaction.options.getUser("user", true);
-		const id = interaction.options.data[1].value as string;
+		const user : User = interaction.options.getUser("user") as User;
+		const id : string = interaction.options.get("id")?.value as string;
 
 		let warns : Array<Warn> = await interaction.client.db.get(`warns_${interaction.guildId}_${user.id}`) || [];
 		warns = warns.filter(warn => warn.id !== id);
-		await interaction.client.db.set(`warns_${interaction.guildId}_${user.id}`, warns);
+		interaction.client.db.set(`warns_${interaction.guildId}_${user.id}`, warns);
 
 		interaction.reply({
 			embeds: [
-				new EmbedBuilder()
-					.setAuthor({ name: "Refraction" })
+				new Embed({ addFooter: true, interaction, addTimestamp: true })
 					.setDescription(`🔨 **Unwarned**\n${user.tag} has been unwarned`)
-					.setColor("#D14D3B")
-					.setFooter({ text: `Requested by ${interaction.user.tag}`, iconURL: interaction.user.displayAvatarURL({ size: 4096 }) })
-					.setTimestamp()
 			]
 		});
 	}

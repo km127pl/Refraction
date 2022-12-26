@@ -1,4 +1,5 @@
-import { SlashCommandBuilder, EmbedBuilder } from "discord.js";
+import { SlashCommandBuilder } from "discord.js";
+import Embed from "../../function/Embed";
 import { SlashCommand } from "../../types";
 
 const command: SlashCommand = {
@@ -9,18 +10,14 @@ const command: SlashCommand = {
 		// send to DMs
 		interaction.user.send({
 			embeds: [
-				new EmbedBuilder()
-					.setAuthor({ name: "Refraction" })
+				new Embed()
 					.setDescription("🔗 **Invite:**\n https://refraction.us.to/add")
-					.setColor("#D14D3B")
 			]
 		}).catch(() => { // if the user has DMs disabled
 			interaction.reply({
 				embeds: [
-					new EmbedBuilder()
-						.setAuthor({ name: "Refraction" })
+					new Embed()
 						.setDescription("🔗 **Invite:**\n https://refraction.us.to/add")
-						.setColor("#D14D3B")
 				], ephemeral: true
 			});
 		});
