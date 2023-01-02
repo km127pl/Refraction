@@ -1,5 +1,4 @@
-### This project is abandoned for know, I do not know if it will be picked up on later.
-
+# This project is abandoned for now, I do not know if it will be picked up on later.
 
 
 ![Refraction - Powerful Discord bot with a range of moderation and utility features.](assets/thumbnail.png)
